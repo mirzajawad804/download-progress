@@ -1,0 +1,167 @@
+/* =====================
+   Global Reset
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui, sans-serif;
+}
+
+/* =====================
+   Responsive Background
+===================== */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: radial-gradient(circle at top, #667eea, #764ba2);
+}
+
+/* =====================
+   Glass Card
+===================== */
+.glass-card {
+    width: min(420px, 100%);
+    padding: clamp(22px, 4vw, 32px);
+    text-align: center;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 rgba(255,255,255,0.2);
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+/* Hover interaction */
+.glass-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.35),
+        inset 0 0 30px rgba(255,255,255,0.12);
+}
+
+/* =====================
+   Title
+===================== */
+.glass-card h2 {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 26px;
+    font-size: clamp(18px, 3.5vw, 22px);
+}
+
+/* =====================
+   Progress Container
+===================== */
+.progress-container {
+    width: 100%;
+    height: clamp(12px, 2.5vw, 16px);
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Subtle shine animation */
+.progress-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,0.35),
+        transparent 70%
+    );
+    animation: shine 2.5s infinite;
+}
+
+/* =====================
+   Progress Bar
+===================== */
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 30px;
+    background: linear-gradient(
+        90deg,
+        #00f2fe,
+        #4facfe,
+        #6a5af9
+    );
+    box-shadow:
+        0 0 12px rgba(79, 172, 254, 0.8),
+        inset 0 0 6px rgba(255,255,255,0.35);
+    /* transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Moving stripes for download feel */
+.progress-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.3) 0,
+        rgba(255,255,255,0.3) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    
+}
+
+/* =====================
+   Percentage Text
+===================== */
+.percent {
+    color: #fff;
+    font-weight: 500;
+    font-size: clamp(16px, 3vw, 20px);
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+/* Small interaction */
+.glass-card:hover .percent {
+    transform: scale(1.08);
+}
+
+/* =====================
+   Animations
+===================== */
+@keyframes stripes {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 40px 0;
+    }
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* =====================
+   Mobile Tweaks
+===================== */
+@media (max-width: 480px) {
+    .glass-card {
+        border-radius: 18px;
+    }
+}
